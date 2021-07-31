@@ -5,6 +5,7 @@ import express from 'express';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import morgan from 'morgan';
+import routes from './routes/index';
 
 // MIDDLEWARE
 const app = express();
@@ -15,9 +16,7 @@ app.use(morgan('dev'));
 app.use(cookieParser());
 
 // ROUTES
-app.get('/', (req, res) => {
-    res.json({ msg: 'Hi, welcome to new PEN'});
-})
+app.use('/api', routes.authRouter);
 
 // DATABASE
 import './config/database';
