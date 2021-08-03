@@ -33,14 +33,17 @@ const sendEmail = async (to: string, url: string, txt: string) => {
         const mailOptions = {
             from: SENDER_MAIL,
             to: to,
-            subject: `
-                <div style="max-width=700px; margin: 50px auto; border: 10px solid #ddd; padding: 50px 20px; font-size: 110%;">
-                    <h2 style="text-align: center; text-transform: uppercase; color: crimson">Welcome To 2:15PM !</h2>
-                    <p>Congratulations! You're almost set to start blogging on 2:15PM. <br/>
+            subject: 'Please verify email address!',
+            html: `
+                <div style="width: 80%; max-width=500px; margin: 50px auto; border: 10px solid #ddd; padding: 50px; font-size: 110%;">
+                    <h1 style="text-align: center; text-transform: uppercase; color: crimson">Welcome To 2:15PM !</h1>
+                    <p style="text-align: center;">Congratulations! You're almost set to start blogging on 2:15PM. <br/>
                         Just click the button below to validate your email address.
                     </p>
-                    <a href=${url} style="background-color: crimson; text-decoration: none; color: white; padding: 15px 30px; maring: 10px 0; display: inline-block">${txt}</a>
-                    <p>If the button doesn't work for any reason, you can also click on the link below:</p>
+                    <div style="width: 100%; display: flex; justify-content: center">
+                        <a href=${url} style="text-align: center; background-color: crimson; text-decoration: none; color: white; padding: 15px 30px; margin: 20px auto;">${txt}</a>
+                    </div>
+                    <p style="color: gray;">If the button doesn't work for any reason, you can also click on the link below:</p>
                     <div>${url}</div>
                 </div>
             `

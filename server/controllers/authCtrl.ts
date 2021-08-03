@@ -6,7 +6,8 @@ import jwt from 'jsonwebtoken';
 import { generateActiveToken } from '../config/generateToken';
 import sendEmail from '../config/sendMail';
 import { validateEmail, validatePhone } from '../middleware/valid';
-import SendmailTransport from 'nodemailer/lib/sendmail-transport';
+import { sendSms } from '../config/sendSMS';
+// import SendmailTransport from 'nodemailer/lib/sendmail-transport';
 
 const CLIENT_URL = `${process.env.BASE_URL}`;
 
@@ -35,6 +36,10 @@ const authCtrl = {
                 return res.json({
                     msg: "Success! Please check your email."
                 })
+            } else if (validPhone(account)) {
+                sendSms(account, url, "Verify your phone number.");
+                return res.json(P
+                    msg: "Success! Please check your ")
             }
 
             // res.json({
